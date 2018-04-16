@@ -16,14 +16,36 @@ separaten [[./briefkasten.R][File]] verfügbar.
 
 * Packages und Data
 ** Packages
-#+begin_src R :session  :exports both :tangle yes
+#+BEGIN_SRC R
 library(ggplot2)
 library(dplyr)
 library(raster)
 library(geosphere)
 library(tictoc)
 library(stringr)
-#+end_src
+#+END_SRC
+
+#+RESULTS:
+| geosphere    |
+| stringr      |
+| rworldmap    |
+| tictoc       |
+| raster       |
+| sp           |
+| RColorBrewer |
+| gridExtra    |
+| reshape2     |
+| dplyr        |
+| devtools     |
+| ggswissmaps  |
+| ggplot2      |
+| stats        |
+| graphics     |
+| grDevices    |
+| utils        |
+| datasets     |
+| methods      |
+| base         |
 
 
 ** Daten

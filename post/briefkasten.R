@@ -1,10 +1,3 @@
-library(ggplot2)
-library(dplyr)
-library(raster)
-library(geosphere)
-library(tictoc)
-library(stringr)
-
 # Daten einlesen
 dat <- read.csv("./data/zugangspunkte-post.csv", header=TRUE, sep=";")
 
@@ -40,7 +33,7 @@ p <- ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
    geom_bar(stat="identity", fill="steelblue") +
    geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=2.8, angle=0, color="black") +
    xlab("\nKanton") +
-   ylab("Anzahl Briefkästen\n") +
+   ylab("Anzahl Briefeinwurfstellen\n") +
    theme_minimal()
 
 p
