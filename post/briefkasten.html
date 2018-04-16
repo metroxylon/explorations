@@ -1,0 +1,773 @@
+<html lang="de">
+<head>
+<!-- 2018-04-16 Mon 15:52 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der einsamste Briefkasten der Schweiz</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Ismael Lieberherr">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Der einsamste Briefkasten der Schweiz
+<br>
+<span class="subtitle">Und ähnliche Fragen&#x2026;</span>
+</h1>
+<div id="table-of-contents">
+<h2>Inhaltsverzeichnis</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3e27812">1. Packages und Data</a>
+<ul>
+<li><a href="#org3cfc1ea">1.1. Packages</a></li>
+<li><a href="#org1e2efbd">1.2. Daten</a></li>
+<li><a href="#org1121f06">1.3. Überblick</a></li>
+</ul>
+</li>
+<li><a href="#orga0769aa">2. Briefkasten pro Kanton</a></li>
+<li><a href="#org69b2611">3. Karten Briefkästen</a></li>
+<li><a href="#org14f61ab">4. Der südlichste, nördlichste, östlichste, westlichste Briefkasten</a></li>
+<li><a href="#org23da047">5. Der einsamste Briefkasten</a></li>
+<li><a href="#orgfb0f486">6. Die grösste Entfernung von einem Briefkasten</a></li>
+<li><a href="#orgcc8aa3f">7. Zusammenfassung</a></li>
+</ul>
+</div>
+</div>
+<p>
+Die Schweiz hat tausende Briefkästen. In einem frei zugänglichen
+Datensatz auf dem Open Data Portal der Schweizer Post
+<a href="https://swisspost.opendatasoft.com/explore/?sort=modified&amp;refine.keyword=Zugangspunkt">(https://swisspost.opendatasoft.com</a>) sind die genauen Koordinaten von
+jedem Einzelnen verzeichnet. Welches ist der nördlichste, südlichste,
+westlichste, östlichste Briefkasten der Schweiz? Welches ist der
+abgelegenste Briefkasten? Wie weit muss man in der Schweiz maximal
+gehen, um einen Brief einzuwerfen? Dies sind einige der Fragen in den
+folgenden Zeilen. Gerechnet wird mit R.
+</p>
+
+<div id="outline-container-org3e27812" class="outline-2">
+<h2 id="org3e27812"><span class="section-number-2">1</span> Packages und Data</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org3cfc1ea" class="outline-3">
+<h3 id="org3cfc1ea"><span class="section-number-3">1.1</span> Packages</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #7fffd4;">library</span>(ggplot2)
+<span style="color: #7fffd4;">library</span>(dplyr)
+<span style="color: #7fffd4;">library</span>(raster)
+<span style="color: #7fffd4;">library</span>(tictoc)
+<span style="color: #7fffd4;">library</span>(stringr)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1e2efbd" class="outline-3">
+<h3 id="org1e2efbd"><span class="section-number-3">1.2</span> Daten</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Wir speichern den Datensatz vom Open Data Portal
+<a href="https://swisspost.opendatasoft.com/explore/dataset/zugangspunkte-post/download/?format=csv">zugangspunkte-post.csv</a> als CSV im Ordner <code>data</code>.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-R">dat <span style="color: #7fffd4;">&lt;-</span> read.csv(<span style="color: #ffa07a;">"./data/zugangspunkte-post.csv"</span>, header=<span style="color: #98fb98;">TRUE</span>, sep=<span style="color: #ffa07a;">";"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1121f06" class="outline-3">
+<h3 id="org1121f06"><span class="section-number-3">1.3</span> Überblick</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Was uns interessiert ist die Variable <code>poityp_de</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">summary(dat[<span style="color: #ffa07a;">"poityp_de"</span>])
+</pre>
+</div>
+
+<p>
+Briefkästen sind die Einträge <code>Briefeinwurf</code>. Wie kommt es, dass es mehr
+Filialen und Postfachanlagen gibt als Briefkästen? Der Grund ist, dass
+in den Filialen und den Postfachanlagen verschiedene Services
+angeboten werden. D.h. es gibt manchmal mehrere Einträge <code>Filiale</code> am
+gleichen Ort (<code>geopoint</code>).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">filialen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Filiale"</span>,]
+paste(<span style="color: #ffa07a;">"Verschiedene Filialen: "</span>, dim(unique(filialen[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
+</pre>
+</div>
+
+<p>
+Das heisst es gibt also "nur" 2168 verschiedene Filialen. Mehrere
+Einträge pro Anlage gibt es auch bei den Postfachanlagen:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">postfachanlagen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Postfachanlage"</span>,]
+paste(<span style="color: #ffa07a;">"Verschiedene Postfachanlagen: "</span>,
+            dim(unique(postfachanlagen[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
+
+</pre>
+</div>
+
+<p>
+Bei den Briefeinwurfstellen gibt es offenbar ebenfalls mehrere am gleichen Ort.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-R">bk = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Briefeinwurf"</span>,]
+paste(<span style="color: #ffa07a;">"Verschiedene Briefk&#228;sten: "</span>, dim(unique(bk[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
+</pre>
+</div>
+
+<p>
+Insgesamt sind es 14557 Briefkästen an 14369 verschiedenen Orten. Bis
+zu 5 Briefeinwurfstellen sind mit den gleichen Koordinaten
+eingetragen:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">a = table(bk[<span style="color: #ffa07a;">"geopoint"</span>])
+head(a[order(a, decreasing=T)])
+</pre>
+</div>
+
+<p>
+Zum Beispiel am Genf Flughafen:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">bk[bk[<span style="color: #ffa07a;">"geopoint"</span>]==<span style="color: #ffa07a;">"46.23077572, 6.10762985"</span>, <span style="color: #ffa07a;">"POIName_de"</span>]
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga0769aa" class="outline-2">
+<h2 id="orga0769aa"><span class="section-number-2">2</span> Briefkasten pro Kanton</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Wie sind die Briefkästen über die Kantone verteilt? Haben alle Kantone
+etwa gleich viele Briefkästen? Wohl kaum. Die Kanton haben sind
+flächenmässig ganz unterschiedlich gross und sind unterschiedlich
+dicht besiedelt.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">kantbk = table(bk[<span style="color: #ffa07a;">"address_kantoncode"</span>])
+kantbk = kantbk[order(-kantbk)]
+kantbk
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R">kantbk <span style="color: #7fffd4;">&lt;-</span> data.frame(kantbk[1:26])
+colnames(kantbk) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Kanton"</span>, <span style="color: #ffa07a;">"Anzahl"</span>)
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-R">p <span style="color: #7fffd4;">&lt;-</span> ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
+   geom_bar(stat=<span style="color: #ffa07a;">"identity"</span>, fill=<span style="color: #ffa07a;">"steelblue"</span>) +
+   geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=2.8, angle=0, color=<span style="color: #ffa07a;">"black"</span>) +
+   xlab(<span style="color: #ffa07a;">"\nKanton"</span>) +
+   ylab(<span style="color: #ffa07a;">"Anzahl Briefk&#228;sten\n"</span>) +
+   theme_minimal()
+
+p
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./figures/briefkasten-kanton.png" alt="briefkasten-kanton.png">
+</p>
+<p><span class="figure-number">Abbildung 1: </span>Briefkasten in den Kantonen.</p>
+</div>
+
+<p>
+Tatsächlich gibt es also grosse Unterschiede. Der Kanton Bern hat mehr
+als 100 mal mehr Briefeinwurfstellen (2273) als der Kanton Appenzell
+Innerrhoden (20).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org69b2611" class="outline-2">
+<h2 id="org69b2611"><span class="section-number-2">3</span> Karten Briefkästen</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-R">bkcoord <span style="color: #7fffd4;">&lt;-</span> str_split_fixed(bk$geopoint, <span style="color: #ffa07a;">","</span>, 2)
+coords <span style="color: #7fffd4;">&lt;-</span> data.frame(cbind(as.numeric(bkcoord[,1]), as.numeric(bkcoord[,2])))
+colnames(coords) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"lat"</span>, <span style="color: #ffa07a;">"lon"</span>)
+bk[<span style="color: #ffa07a;">"lat"</span>] = coords[<span style="color: #ffa07a;">"lat"</span>]
+bk[<span style="color: #ffa07a;">"lon"</span>] = coords[<span style="color: #ffa07a;">"lon"</span>]
+coordinates(coords) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"lon"</span>, <span style="color: #ffa07a;">"lat"</span>)
+crs.geo <span style="color: #7fffd4;">&lt;-</span> CRS(<span style="color: #ffa07a;">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span>)
+proj4string(coords) <span style="color: #7fffd4;">&lt;-</span> crs.geo
+summary(coords)
+ch <span style="color: #7fffd4;">&lt;-</span> getData(<span style="color: #ffa07a;">"GADM"</span>, country = <span style="color: #ffa07a;">"CHE"</span>, level = 0)
+png(file=<span style="color: #ffa07a;">"figures/alle-briefkasten-map.png"</span>,width=800,height=600)
+plot(coords, pch = 20, cex=0.8, col = <span style="color: #ffa07a;">"steelblue"</span>)
+plot(ch, add = T)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./figures/alle-briefkasten-map.png" alt="alle-briefkasten-map.png">
+</p>
+<p><span class="figure-number">Abbildung 2: </span>Alle Briefkästen der Schweizer Post.</p>
+</div>
+
+<p>
+Die Dichte an Briefkasten stimmt ungefähr mit der Siedlungsdichte
+überein wie die Karte zeigt. Die grossen Siedlungszentren um Zürich,
+Basel, Genf, Locarno und die Alpentäler sind deutlich auszumachen. Ebenso Gebirge und
+Seen (wo es keine Briefkästen gibt). Ein Briefkasten ist ausserhalb
+der Grenzen, am Flughafen Basel.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14f61ab" class="outline-2">
+<h2 id="org14f61ab"><span class="section-number-2">4</span> Der südlichste, nördlichste, östlichste, westlichste Briefkasten</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Welches ist der südlichste, nördlichste, östlichste, westlichste Briefkasten?
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">bk[which.max(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
+bk[which.min(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
+bk[which.min(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
+bk[which.max(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
+</pre>
+</div>
+
+<pre class="example">
+                               POIName_de               geopoint
+32192 Briefeinwurf Bargen SH, Dorfstrasse 47.7920661, 8.61119639
+                                     POIName_de               geopoint
+67728 Briefeinwurf Pedrinate, Filiale Pedrinate 45.82604626, 9.0128896
+                                    POIName_de               geopoint
+33654 Briefeinwurf Chancy, Route de Bellegarde 46.1499937, 5.97105028
+                              POIName_de                geopoint
+47917 Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
+
+</pre>
+
+<p>
+Mit Google Street View sind drei der vier Briefkästen leicht zu finden.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/bargen-sh.png" alt="bargen-sh.png">
+</p>
+<p><span class="figure-number">Abbildung 3: </span>Nördlichster Briefkasten der Schweiz in Bargen SH</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./images/pedrinate-ti.png" alt="pedrinate-ti.png">
+</p>
+<p><span class="figure-number">Abbildung 4: </span>Der Südlichste in Pedrinate TI</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./images/martina-gr.png" alt="martina-gr.png">
+</p>
+<p><span class="figure-number">Abbildung 5: </span>Der Östlichste in Martina GR</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./images/chancy-ge.png" alt="chancy-ge.png">
+</p>
+<p><span class="figure-number">Abbildung 6: </span>Der Westlichste</p>
+</div>
+
+
+<p>
+Wir berechnen noch die Luftliniendistanz vom nördlichsten zum südlichsten und
+vom westlichsten zum östlichsten Briefkasten.
+</p>
+<div class="org-src-container">
+<pre class="src src-R">maxN = which.max(bk$lat)
+maxS = which.min(bk$lat)
+maxW = which.min(bk$lon)
+maxE = which.max(bk$lon)
+
+NSWE <span style="color: #7fffd4;">&lt;-</span> distm(bk[c(maxN,maxW) ,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], bk[c(maxS, maxE),c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], fun=distHaversine)
+paste(<span style="color: #ffa07a;">"Nord-S&#252;d: "</span>, round(NSWE[1,1]/1000,3), <span style="color: #ffa07a;">"km"</span>)
+paste(<span style="color: #ffa07a;">"West-Ost: "</span>, round(NSWE[2,2]/1000,3), <span style="color: #ffa07a;">"km"</span>)
+
+</pre>
+</div>
+
+<pre class="example">
+[1] "Nord-Süd:  220.985 km"
+[1] "West-Ost:  353.681 km"
+
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org23da047" class="outline-2">
+<h2 id="org23da047"><span class="section-number-2">5</span> Der einsamste Briefkasten</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Welcher Briefkasten ist am weitesten entfernt von einem andern
+Briefkasten? Für diese Frage berechnen wir eine Matrix mit der
+Distanzen zwischen allen Briefkästen, was je nach Hardware etwas
+dauern kann.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #7fffd4;">require</span>(<span style="color: #ffa07a;">"geosphere"</span>)
+tic(<span style="color: #ffa07a;">"Berechnung der Distanzmatrix"</span>)
+mat <span style="color: #7fffd4;">&lt;-</span> distm(bk[,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], bk[,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], fun=distHaversine)
+toc()
+</pre>
+</div>
+
+<pre class="example">
+Berechnung der Distanzmatrix: 242.268 sec elapsed
+
+</pre>
+
+<p>
+Wir definieren eine Funktion, um die grössten Spaltenminima zu finden,
+und deren Indizes in der Distanzmatrix.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #87cefa;">col_min</span> <span style="color: #7fffd4;">&lt;-</span> <span style="color: #00ffff;">function</span>(colnr, matr){
+    <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Minimum und position des Minimums in jeder Spalte.</span>
+    m <span style="color: #7fffd4;">&lt;-</span> which.min(matr[,colnr])
+    value <span style="color: #7fffd4;">&lt;-</span> matr[m,colnr]
+    c(m, colnr, value)
+}
+
+<span style="color: #87cefa;">get_remotest_n</span> <span style="color: #7fffd4;">&lt;-</span> <span style="color: #00ffff;">function</span>(matr, n){
+   <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Berechnet das gr&#246;sste Spaltenminimum und die Position in der Matrix.</span>
+   nr_cols = dim(matr)[2]
+   colmins = sapply(1:nr_cols, <span style="color: #00ffff;">function</span>(j) col_min(j, matr))
+   colmins = colmins[,order(-colmins[3,])]
+   colmins[,1:n]
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-R">mat[mat==0] <span style="color: #7fffd4;">&lt;-</span> <span style="color: #98fb98;">NA</span>
+remotest5 = get_remotest_n(mat, 5)
+</pre>
+</div>
+
+<p>
+Die Koordinaten der 5 entlegensten Briefkästen:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">a <span style="color: #7fffd4;">&lt;-</span> data.frame(cbind(remotest5[3,], bk[remotest5[2,], c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]))
+colnames(a) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Distanz (m)"</span>, <span style="color: #ffa07a;">"Ort"</span>, <span style="color: #ffa07a;">"geopoint"</span>)
+rownames(a) <span style="color: #7fffd4;">&lt;-</span> 1:5
+a
+</pre>
+</div>
+
+<pre class="example">
+  Distanz (m)                                             Ort
+1    8828.135                     Briefeinwurf Scuol, S-charl
+2    7873.248   Briefeinwurf Gruben, Briefkastenanlage Gruben
+3    6540.652             Briefeinwurf Arolla, Filiale Arolla
+4    6509.128 Briefeinwurf Simplon Dorf, Filiale Simplon Dorf
+5    6509.128              Briefeinwurf Gondo, Simplonstrasse
+                 geopoint
+1 46.71528382, 10.3346684
+2  46.2116481, 7.70619015
+3 46.02589014, 7.48131079
+4 46.19573661, 8.05531353
+5 46.19586667, 8.13978721
+</pre>
+
+
+<div class="figure">
+<p><img src="./figures/alle-briefkasten-map-mit-pfeil.png" alt="alle-briefkasten-map-mit-pfeil.png">
+</p>
+<p><span class="figure-number">Abbildung 7: </span>Briefeinwurfstelle in S-charl</p>
+</div>
+
+<p>
+Der abgelenste Briefkasten steht in S-charl, in einem Seitental des
+Engadins (möglicherweise von <a href="http://www.quaeldich.de/paesse/s-charl/bilder/?BildID=17739">diesem</a> Fotografen eingefangen). Aber auch
+dieser Briefkasten ist nicht einmal 9 Kilometer Lufliniendistanz vom
+nächsten Briefkasten entfernt. Weitere ziemlich entlegene Briefkasten
+findet man im Wallis.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgfb0f486" class="outline-2">
+<h2 id="orgfb0f486"><span class="section-number-2">6</span> Die grösste Entfernung von einem Briefkasten</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Die Briefeinwurfstellen in der Schweiz sind so dicht gestreut, dass man sich
+fragt, wie weit man sich auf Schweizer Boden überhaupt vom nächsten
+Briefkasten entfernen kann. Wie gross ist die grösste Entfernung von
+einem Briefkasten in der Schweiz? Wo ist dieser Punkt?
+</p>
+
+<p>
+Für diese Frage legen wir einen Raster über die Karte der Schweiz, und
+berechnen für jeden Punkt im Raster den kürzesten Abstand zu einer
+Briefeinwurfstelle. Dies ist wiederum eine aufwändige Rechnung, und
+wir beschränken uns deshalb auf ein ganz grobes Raster von rund 2 km
+Abständen. Im Landesinnern verpassen wir den gesuchten Punkt im
+schlimmsten Fall um einen Kilometer.
+</p>
+
+
+<p>
+Zuerst wird der Raster definiert:
+</p>
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #7fffd4;">library</span>(raster)
+ch <span style="color: #7fffd4;">&lt;-</span> getData(<span style="color: #ffa07a;">"GADM"</span>, country = <span style="color: #ffa07a;">"CHE"</span>, level = 0)
+bkcoords <span style="color: #7fffd4;">&lt;-</span> SpatialPoints(bk[,c(<span style="color: #ffa07a;">"lon"</span>, <span style="color: #ffa07a;">"lat"</span>)])
+ext <span style="color: #7fffd4;">&lt;-</span> extent(5.956063, 10.49511, 45.81706, 47.80848)
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">grobes Raster</span>
+r <span style="color: #7fffd4;">&lt;-</span> raster(ext, nrow = 110, ncol = 175)
+chraster <span style="color: #7fffd4;">&lt;-</span> rasterize(ch, r)
+</pre>
+</div>
+
+
+<p>
+Dann wird die Matrix berechnet:
+</p>
+<div class="org-src-container">
+<pre class="src src-R">tic(<span style="color: #ffa07a;">"Distance matrix"</span>)
+D <span style="color: #7fffd4;">&lt;-</span> distanceFromPoints(object = chraster, xy = bkcoords)
+toc()
+</pre>
+</div>
+
+
+
+<p>
+Von der berechneten Matrix, extrahieren wir die 10 Punkte mit dem
+grössten Abstand zu einem Briefkasten und deren Koordinaten.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">D[which(is.na(chraster[]))] <span style="color: #7fffd4;">&lt;-</span> <span style="color: #98fb98;">NA</span>
+<span style="color: #87cefa;">remotest_n</span> <span style="color: #7fffd4;">&lt;-</span> <span style="color: #00ffff;">function</span>(n, D, raster){
+     <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Extrahiert die n Punkte mit dem gr&#246;ssten Abstand zu einem</span>
+     <span style="color: #ff4500;"># </span><span style="color: #ff4500;">Briefkasten und deren Koordinaten.</span>
+     rem_n = head(order(values(D), decreasing=T), n)
+     coords = xyFromCell(raster, rem_n)
+     res = data.frame(cbind(values(D)[rem_n], coords[,2], coords[,1]))
+     colnames(res) = c(<span style="color: #ffa07a;">"Distanz (m)"</span>, <span style="color: #ffa07a;">"lat"</span>, <span style="color: #ffa07a;">"lon"</span>)
+     rownames(res) = 1:n
+     res
+  }
+  remotest_10 = remotest_n(10, D, chraster)
+  remotest_10
+</pre>
+</div>
+
+<pre class="example">
+   Distanz (m)      lat       lon
+1     12998.13 45.91663  7.421527
+2     12749.16 45.91663  7.395589
+3     12067.52 45.91663  7.369652
+4     11248.25 45.91663  7.343715
+5     11140.89 45.93473  7.421527
+6     11098.84 46.38733  9.911518
+7     10943.36 45.93473  7.395589
+8     10745.86 46.51406 10.041205
+9     10710.85 46.53216  8.121837
+10    10616.25 46.56837  8.173712
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R">png(file=<span style="color: #ffa07a;">"figures/schweiz-distance-110-175.png"</span>,width=800,height=600)
+plot(D)
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./figures/schweiz-distance-110-175-mit-pfeil.png" alt="schweiz-distance-110-175-mit-pfeil.png">
+</p>
+<p><span class="figure-number">Abbildung 8: </span>Kein Höhenprofil sondern die Luftliniendistanz zum nächsten Briefkasten (in Metern).</p>
+</div>
+
+<p>
+Die Punkte mit dem grössten Abstand zu einem Briefkasten sind im
+Wallis hinter dem Grand Combin an der Schweiz-Italienischen Grenze,
+etwas mehr als 13 km vom nächsten Briefkasten entfernt. Unsere
+Schätzung ist bei dem groben Raster noch reichlich ungenau und könnte
+bis zu einem Kilometer daneben liegen. Mit einem feineren Raster,
+etwas Geduld oder besserer Hardware könnte man den Punkt noch genauer
+bestimmen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcc8aa3f" class="outline-2">
+<h2 id="orgcc8aa3f"><span class="section-number-2">7</span> Zusammenfassung</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Die 14'369 Briefeinwurfstellen der Schweizer Post sind recht
+ dicht über das bewohnte Gebiet der Schweiz
+verteilt. Von einem Briefkasten in der Schweiz zum
+nächsten sind es allerhöchstens 8.8 km Luftlinie. Zudem gibt es keinen
+Punkt im gesamten Gebiet der Schweiz, der weiter als etwa 14km von
+einem Briefkasten entfernt ist (13 km plus möglicherweise 1 km Fehler).
+Vom nördlichsten zum südlichsten Briefkasten sind es
+220.985km, vom westlichsten zum östlichsten sind es 353.681 km.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Ismael Lieberherr</p>
+<p class="date">Created: 2018-04-16 Mon 15:52</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

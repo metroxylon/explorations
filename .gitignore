@@ -18,3 +18,5 @@ beers/beers-draft.py
 /beers/.ipynb_checkpoints/beers-checkpoint.ipynb
 .gitignore
 /beers/data/beers_files/*
+post/.Rhistory
+/beers/beers-latex/beers.aux
