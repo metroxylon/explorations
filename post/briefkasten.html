@@ -1,6 +1,7 @@
+HTML5
 <html lang="de">
 <head>
-<!-- 2018-04-16 Mon 15:52 -->
+<!-- 2018-04-16 Mon 20:28 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Der einsamste Briefkasten der Schweiz</title>
@@ -234,19 +235,19 @@ for the JavaScript code in this tag.
 <h2>Inhaltsverzeichnis</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3e27812">1. Packages und Data</a>
+<li><a href="#org58b6c3b">1. Packages und Data</a>
 <ul>
-<li><a href="#org3cfc1ea">1.1. Packages</a></li>
-<li><a href="#org1e2efbd">1.2. Daten</a></li>
-<li><a href="#org1121f06">1.3. Überblick</a></li>
+<li><a href="#org9ca58bf">1.1. Packages</a></li>
+<li><a href="#org6034eba">1.2. Daten</a></li>
+<li><a href="#org3f8d215">1.3. Überblick</a></li>
 </ul>
 </li>
-<li><a href="#orga0769aa">2. Briefkasten pro Kanton</a></li>
-<li><a href="#org69b2611">3. Karten Briefkästen</a></li>
-<li><a href="#org14f61ab">4. Der südlichste, nördlichste, östlichste, westlichste Briefkasten</a></li>
-<li><a href="#org23da047">5. Der einsamste Briefkasten</a></li>
-<li><a href="#orgfb0f486">6. Die grösste Entfernung von einem Briefkasten</a></li>
-<li><a href="#orgcc8aa3f">7. Zusammenfassung</a></li>
+<li><a href="#org83aa194">2. Briefkasten pro Kanton</a></li>
+<li><a href="#org2662ba5">3. Karten Briefkästen</a></li>
+<li><a href="#org97ff419">4. Der südlichste, nördlichste, östlichste, westlichste Briefkasten</a></li>
+<li><a href="#orge8b267a">5. Der einsamste Briefkasten</a></li>
+<li><a href="#orgae9345f">6. Die grösste Entfernung von einem Briefkasten</a></li>
+<li><a href="#orgdeae319">7. Zusammenfassung</a></li>
 </ul>
 </div>
 </div>
@@ -258,29 +259,121 @@ jedem Einzelnen verzeichnet. Welches ist der nördlichste, südlichste,
 westlichste, östlichste Briefkasten der Schweiz? Welches ist der
 abgelegenste Briefkasten? Wie weit muss man in der Schweiz maximal
 gehen, um einen Brief einzuwerfen? Dies sind einige der Fragen in den
-folgenden Zeilen. Gerechnet wird mit R.
+folgenden Zeilen. Der R-Code ist auch ohne Text in einem
+separaten <a href="./briefkasten.R">File</a> verfügbar.
 </p>
 
-<div id="outline-container-org3e27812" class="outline-2">
-<h2 id="org3e27812"><span class="section-number-2">1</span> Packages und Data</h2>
+<div id="outline-container-org58b6c3b" class="outline-2">
+<h2 id="org58b6c3b"><span class="section-number-2">1</span> Packages und Data</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3cfc1ea" class="outline-3">
-<h3 id="org3cfc1ea"><span class="section-number-3">1.1</span> Packages</h3>
+<div id="outline-container-org9ca58bf" class="outline-3">
+<h3 id="org9ca58bf"><span class="section-number-3">1.1</span> Packages</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #7fffd4;">library</span>(ggplot2)
 <span style="color: #7fffd4;">library</span>(dplyr)
 <span style="color: #7fffd4;">library</span>(raster)
+<span style="color: #7fffd4;">library</span>(geosphere)
 <span style="color: #7fffd4;">library</span>(tictoc)
 <span style="color: #7fffd4;">library</span>(stringr)
 </pre>
 </div>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">geosphere</td>
+</tr>
+
+<tr>
+<td class="org-left">stringr</td>
+</tr>
+
+<tr>
+<td class="org-left">rworldmap</td>
+</tr>
+
+<tr>
+<td class="org-left">tictoc</td>
+</tr>
+
+<tr>
+<td class="org-left">raster</td>
+</tr>
+
+<tr>
+<td class="org-left">sp</td>
+</tr>
+
+<tr>
+<td class="org-left">RColorBrewer</td>
+</tr>
+
+<tr>
+<td class="org-left">gridExtra</td>
+</tr>
+
+<tr>
+<td class="org-left">reshape2</td>
+</tr>
+
+<tr>
+<td class="org-left">dplyr</td>
+</tr>
+
+<tr>
+<td class="org-left">devtools</td>
+</tr>
+
+<tr>
+<td class="org-left">ggswissmaps</td>
+</tr>
+
+<tr>
+<td class="org-left">ggplot2</td>
+</tr>
+
+<tr>
+<td class="org-left">stats</td>
+</tr>
+
+<tr>
+<td class="org-left">graphics</td>
+</tr>
+
+<tr>
+<td class="org-left">grDevices</td>
+</tr>
+
+<tr>
+<td class="org-left">utils</td>
+</tr>
+
+<tr>
+<td class="org-left">datasets</td>
+</tr>
+
+<tr>
+<td class="org-left">methods</td>
+</tr>
+
+<tr>
+<td class="org-left">base</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
-<div id="outline-container-org1e2efbd" class="outline-3">
-<h3 id="org1e2efbd"><span class="section-number-3">1.2</span> Daten</h3>
+
+<div id="outline-container-org6034eba" class="outline-3">
+<h3 id="org6034eba"><span class="section-number-3">1.2</span> Daten</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Wir speichern den Datensatz vom Open Data Portal
@@ -289,22 +382,41 @@ Wir speichern den Datensatz vom Open Data Portal
 
 
 <div class="org-src-container">
-<pre class="src src-R">dat <span style="color: #7fffd4;">&lt;-</span> read.csv(<span style="color: #ffa07a;">"./data/zugangspunkte-post.csv"</span>, header=<span style="color: #98fb98;">TRUE</span>, sep=<span style="color: #ffa07a;">";"</span>)
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Daten einlesen</span>
+dat <span style="color: #7fffd4;">&lt;-</span> read.csv(<span style="color: #ffa07a;">"./data/zugangspunkte-post.csv"</span>, header=<span style="color: #98fb98;">TRUE</span>, sep=<span style="color: #ffa07a;">";"</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1121f06" class="outline-3">
-<h3 id="org1121f06"><span class="section-number-3">1.3</span> Überblick</h3>
+
+
+<div id="outline-container-org3f8d215" class="outline-3">
+<h3 id="org3f8d215"><span class="section-number-3">1.3</span> Überblick</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Was uns interessiert ist die Variable <code>poityp_de</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-R">summary(dat[<span style="color: #ffa07a;">"poityp_de"</span>])
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Zusammenfassung der Spalte "poityp_de" mit "Filiale",</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">"Postfachanlage", "Briefeinwurf" etc.</span>
+summary(dat[<span style="color: #ffa07a;">"poityp_de"</span>])
 </pre>
 </div>
+
+<pre class="example">
+               poityp_de
+Filiale             :32916
+Postfachanlage      :24408
+Briefeinwurf        :14557
+Postomat            : 3578
+Hausservice         : 1329
+PickPost-Drittstelle:  472
+(Other)             :  824
+
+</pre>
+
+
 
 <p>
 Briefkästen sind die Einträge <code>Briefeinwurf</code>. Wie kommt es, dass es mehr
@@ -315,10 +427,19 @@ gleichen Ort (<code>geopoint</code>).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">filialen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Filiale"</span>,]
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Anzahl der Filialen mit verschiedenen "geopoint"-Koordinaten</span>
+filialen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Filiale"</span>,]
 paste(<span style="color: #ffa07a;">"Verschiedene Filialen: "</span>, dim(unique(filialen[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
 </pre>
 </div>
+
+<pre class="example">
+[1] "Verschiedene Filialen:  2168"
+
+</pre>
+<p>
+[1] "Verschiedene Filialen:  2168"
+</p>
 
 <p>
 Das heisst es gibt also "nur" 2168 verschiedene Filialen. Mehrere
@@ -326,12 +447,17 @@ Einträge pro Anlage gibt es auch bei den Postfachanlagen:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">postfachanlagen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Postfachanlage"</span>,]
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Anzahl Postfachanlagen mit verschiedenen "geopoint"-Koordinaten</span>
+postfachanlagen = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Postfachanlage"</span>,]
 paste(<span style="color: #ffa07a;">"Verschiedene Postfachanlagen: "</span>,
             dim(unique(postfachanlagen[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
-
 </pre>
 </div>
+
+<pre class="example">
+[1] "Verschiedene Postfachanlagen:  1902"
+
+</pre>
 
 <p>
 Bei den Briefeinwurfstellen gibt es offenbar ebenfalls mehrere am gleichen Ort.
@@ -343,6 +469,11 @@ Bei den Briefeinwurfstellen gibt es offenbar ebenfalls mehrere am gleichen Ort.
 paste(<span style="color: #ffa07a;">"Verschiedene Briefk&#228;sten: "</span>, dim(unique(bk[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
 </pre>
 </div>
+
+<pre class="example">
+[1] "Verschiedene Briefkästen:  14369"
+
+</pre>
 
 <p>
 Insgesamt sind es 14557 Briefkästen an 14369 verschiedenen Orten. Bis
@@ -356,6 +487,15 @@ head(a[order(a, decreasing=T)])
 </pre>
 </div>
 
+<pre class="example">
+
+46.23077572, 6.10762985  47.05002767, 8.3096945 47.54669097, 7.59305232
+                      5                       5                       5
+   46.1034836, 7.076093 46.46351733, 6.84172552 46.51696775, 6.62967868
+                      3                       3                       3
+
+</pre>
+
 <p>
 Zum Beispiel am Genf Flughafen:
 </p>
@@ -364,12 +504,22 @@ Zum Beispiel am Genf Flughafen:
 <pre class="src src-R">bk[bk[<span style="color: #ffa07a;">"geopoint"</span>]==<span style="color: #ffa07a;">"46.23077572, 6.10762985"</span>, <span style="color: #ffa07a;">"POIName_de"</span>]
 </pre>
 </div>
+
+<pre class="example">
+[1] Briefeinwurf Genève 15 Aéroport, Hall Transit
+[2] Briefeinwurf Genève 15 Aéroport, Galerie marchande - Niveau départs
+[3] Briefeinwurf Genève 15 Aéroport, Route de l' Aéroport
+[4] Briefeinwurf Genève 15 Aéroport, Check-In / Enregistrement
+[5] Briefeinwurf Genève 15 Aéroport, Secteur France
+19007 Levels: 1003 Lausanne Flon My Post 24 ... Tankstelle Yverdon
+
+</pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga0769aa" class="outline-2">
-<h2 id="orga0769aa"><span class="section-number-2">2</span> Briefkasten pro Kanton</h2>
+<div id="outline-container-org83aa194" class="outline-2">
+<h2 id="org83aa194"><span class="section-number-2">2</span> Briefkasten pro Kanton</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Wie sind die Briefkästen über die Kantone verteilt? Haben alle Kantone
@@ -385,12 +535,20 @@ kantbk
 </pre>
 </div>
 
+<pre class="example">
+
+  BE   ZH   VD   VS   AG   TI   GR   SG   FR   LU   GE   TG   SO   BL   NE   BS
+2273 2019 1471  965  922  921  670  670  604  569  511  480  473  353  305  228
+  SZ   JU   ZG   SH   GL   AR   UR   OW   NW   AI        FL
+ 210  199  154  145  102   84   76   75   58   20    0    0
+
+</pre>
+
 <div class="org-src-container">
 <pre class="src src-R">kantbk <span style="color: #7fffd4;">&lt;-</span> data.frame(kantbk[1:26])
 colnames(kantbk) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Kanton"</span>, <span style="color: #ffa07a;">"Anzahl"</span>)
 </pre>
 </div>
-
 
 <div class="org-src-container">
 <pre class="src src-R">p <span style="color: #7fffd4;">&lt;-</span> ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
@@ -419,8 +577,8 @@ Innerrhoden (20).
 </div>
 </div>
 
-<div id="outline-container-org69b2611" class="outline-2">
-<h2 id="org69b2611"><span class="section-number-2">3</span> Karten Briefkästen</h2>
+<div id="outline-container-org2662ba5" class="outline-2">
+<h2 id="org2662ba5"><span class="section-number-2">3</span> Karten Briefkästen</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-R">bkcoord <span style="color: #7fffd4;">&lt;-</span> str_split_fixed(bk$geopoint, <span style="color: #ffa07a;">","</span>, 2)
@@ -441,7 +599,7 @@ plot(ch, add = T)
 
 
 <div class="figure">
-<p><img src="./figures/alle-briefkasten-map.png" alt="alle-briefkasten-map.png">
+<p><img src="./figures/alle-briefkasten-map-mit-basel.png" alt="alle-briefkasten-map-mit-basel.png">
 </p>
 <p><span class="figure-number">Abbildung 2: </span>Alle Briefkästen der Schweizer Post.</p>
 </div>
@@ -456,8 +614,8 @@ der Grenzen, am Flughafen Basel.
 </div>
 </div>
 
-<div id="outline-container-org14f61ab" class="outline-2">
-<h2 id="org14f61ab"><span class="section-number-2">4</span> Der südlichste, nördlichste, östlichste, westlichste Briefkasten</h2>
+<div id="outline-container-org97ff419" class="outline-2">
+<h2 id="org97ff419"><span class="section-number-2">4</span> Der südlichste, nördlichste, östlichste, westlichste Briefkasten</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Welches ist der südlichste, nördlichste, östlichste, westlichste Briefkasten?
@@ -472,6 +630,8 @@ bk[which.max(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span
 </div>
 
 <pre class="example">
+png
+  2
                                POIName_de               geopoint
 32192 Briefeinwurf Bargen SH, Dorfstrasse 47.7920661, 8.61119639
                                      POIName_de               geopoint
@@ -480,7 +640,6 @@ bk[which.max(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span
 33654 Briefeinwurf Chancy, Route de Bellegarde 46.1499937, 5.97105028
                               POIName_de                geopoint
 47917 Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
-
 </pre>
 
 <p>
@@ -488,31 +647,32 @@ Mit Google Street View sind drei der vier Briefkästen leicht zu finden.
 </p>
 
 
+
 <div class="figure">
-<p><img src="./images/bargen-sh.png" alt="bargen-sh.png">
+<p><img src="./images/bargen-sh.png" alt="bargen-sh.png" width="600px">
 </p>
 <p><span class="figure-number">Abbildung 3: </span>Nördlichster Briefkasten der Schweiz in Bargen SH</p>
 </div>
 
 
 <div class="figure">
-<p><img src="./images/pedrinate-ti.png" alt="pedrinate-ti.png">
+<p><img src="./images/pedrinate-ti.png" alt="pedrinate-ti.png" width="600px">
 </p>
 <p><span class="figure-number">Abbildung 4: </span>Der Südlichste in Pedrinate TI</p>
 </div>
 
 
 <div class="figure">
-<p><img src="./images/martina-gr.png" alt="martina-gr.png">
+<p><img src="./images/martina-gr.png" alt="martina-gr.png" width="600px">
 </p>
 <p><span class="figure-number">Abbildung 5: </span>Der Östlichste in Martina GR</p>
 </div>
 
 
 <div class="figure">
-<p><img src="./images/chancy-ge.png" alt="chancy-ge.png">
+<p><img src="./images/chancy-ge.png" alt="chancy-ge.png" width="600px">
 </p>
-<p><span class="figure-number">Abbildung 6: </span>Der Westlichste</p>
+<p><span class="figure-number">Abbildung 6: </span>Der Westlichste in Chancy GE</p>
 </div>
 
 
@@ -542,8 +702,8 @@ paste(<span style="color: #ffa07a;">"West-Ost: "</span>, round(NSWE[2,2]/1000,3)
 </div>
 
 
-<div id="outline-container-org23da047" class="outline-2">
-<h2 id="org23da047"><span class="section-number-2">5</span> Der einsamste Briefkasten</h2>
+<div id="outline-container-orge8b267a" class="outline-2">
+<h2 id="orge8b267a"><span class="section-number-2">5</span> Der einsamste Briefkasten</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Welcher Briefkasten ist am weitesten entfernt von einem andern
@@ -561,7 +721,7 @@ toc()
 </div>
 
 <pre class="example">
-Berechnung der Distanzmatrix: 242.268 sec elapsed
+Berechnung der Distanzmatrix: 389.868 sec elapsed
 
 </pre>
 
@@ -629,7 +789,7 @@ a
 </div>
 
 <p>
-Der abgelenste Briefkasten steht in S-charl, in einem Seitental des
+Der abgelegenste Briefkasten steht in S-charl, in einem Seitental des
 Engadins (möglicherweise von <a href="http://www.quaeldich.de/paesse/s-charl/bilder/?BildID=17739">diesem</a> Fotografen eingefangen). Aber auch
 dieser Briefkasten ist nicht einmal 9 Kilometer Lufliniendistanz vom
 nächsten Briefkasten entfernt. Weitere ziemlich entlegene Briefkasten
@@ -640,8 +800,8 @@ findet man im Wallis.
 
 
 
-<div id="outline-container-orgfb0f486" class="outline-2">
-<h2 id="orgfb0f486"><span class="section-number-2">6</span> Die grösste Entfernung von einem Briefkasten</h2>
+<div id="outline-container-orgae9345f" class="outline-2">
+<h2 id="orgae9345f"><span class="section-number-2">6</span> Die grösste Entfernung von einem Briefkasten</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Die Briefeinwurfstellen in der Schweiz sind so dicht gestreut, dass man sich
@@ -748,8 +908,8 @@ bestimmen.
 </div>
 </div>
 
-<div id="outline-container-orgcc8aa3f" class="outline-2">
-<h2 id="orgcc8aa3f"><span class="section-number-2">7</span> Zusammenfassung</h2>
+<div id="outline-container-orgdeae319" class="outline-2">
+<h2 id="orgdeae319"><span class="section-number-2">7</span> Zusammenfassung</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Die 14'369 Briefeinwurfstellen der Schweizer Post sind recht
@@ -766,7 +926,7 @@ Vom nördlichsten zum südlichsten Briefkasten sind es
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Ismael Lieberherr</p>
-<p class="date">Created: 2018-04-16 Mon 15:52</p>
+<p class="date">Created: 2018-04-16 Mon 20:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
