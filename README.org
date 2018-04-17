@@ -1,7 +1,5 @@
-#+TITLE: Datenprojekte
 #+OPTIONS: toc:nil
 * Datenprojekte
-Dieser Ordner enthält gemischte Übungsprojekte zu öffentlichen Datensätzen.
 ** [[./APD/APD.ipynb][Öffentliche Entwicklungshilfe der Schweiz]]
 - *Thema:* Ausgaben der Schweizer Entwicklungshilfe von 1960-2016, nach Ländern.
 - *Daten:* öffentlicher Datensatz von der [[https://www.eda.admin.ch/deza/de/home/aktivitaeten_projekte/zahlen_und_statistiken/statistische-tabellen.html][DEZA website]]

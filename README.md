@@ -1,7 +1,5 @@
 # Datenprojekte
 
-Dieser Ordner enthält gemischte Übungsprojekte zu öffentlichen Datensätzen.
-
 
 ## [Öffentliche Entwicklungshilfe der Schweiz](./APD/APD.ipynb)
 
