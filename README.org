@@ -1,7 +1,16 @@
 #+TITLE: Datenprojekte
 #+OPTIONS: toc:nil
+* Datenprojekte
 Dieser Ordner enthält gemischte Übungsprojekte zu öffentlichen Datensätzen.
-* Übungsprojekte
-** [[./APD/APD.ipynb][Öffentliche Entwicklungshilfe]]      :Python:Jupyter:R:
-** [[./beers/beers.ipynb][Beer im Coop]]                     :Python:Jupyter:
-** [[http://htmlpreview.github.io/?https://github.com/metroxylon/explorations/blob/master/post/briefkasten.html][Briefkasten in der Schweiz]]     :R:orgmode:ggplot2:
+** [[./APD/APD.ipynb][Öffentliche Entwicklungshilfe der Schweiz]]
+- *Thema:* Ausgaben der Schweizer Entwicklungshilfe von 1960-2016, nach Ländern.
+- *Daten:* öffentlicher Datensatz von der [[https://www.eda.admin.ch/deza/de/home/aktivitaeten_projekte/zahlen_und_statistiken/statistische-tabellen.html][DEZA website]]
+- *Tools:* Python, R, Jupyter Notebooks
+** [[./beers/beers.ipynb][Beer im Coop]]
+- *Thema:* Biersortiments im Coop@home Webshops
+- *Daten:* HTML des  [[https://www.coopathome.ch/en/supermarket/drinks/beer/c/m_0260][Coop@home Webshop]]
+- *Tools:* Python (Beautiful Soup, Pandas, Seaborn), Jupyter Notebooks
+** [[http://htmlpreview.github.io/?https://github.com/metroxylon/explorations/blob/master/post/briefkasten.html][Briefkasten in der Schweiz]]
+- *Thema:* Verteilung der Briefeinwurfstellen der Schweizer Post
+- *Daten:* Öffentlicher Datensatz des [[https://swisspost.opendatasoft.com/pages/home/][Open Data Portals]] der Post
+- *Tools:* R (ggplot2, geosphere, raster), Emacs Orgmode
