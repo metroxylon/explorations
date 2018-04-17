@@ -1,0 +1,7 @@
+#+TITLE: Datenprojekte
+#+OPTIONS: toc:nil
+Dieser Ordner enthält gemischte Übungsprojekte zu öffentlichen Datensätzen.
+* Übungsprojekte
+** [[./APD/APD.ipynb][Öffentliche Entwicklungshilfe]]      :Python:Jupyter:R:
+** [[./beers/beers.ipynb][Beer im Coop]]                     :Python:Jupyter:
+** [[http://htmlpreview.github.io/?https://github.com/metroxylon/explorations/blob/master/post/briefkasten.html][Briefkasten in der Schweiz]]     :R:orgmode:ggplot2:
