@@ -1,6 +1,6 @@
-x<html lang="de">
+<html lang="de">
 <head>
-<!-- 2018-04-16 Mon 21:48 -->
+<!-- 2018-04-17 Tue 08:54 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Der einsamste Briefkasten der Schweiz</title>
@@ -234,19 +234,19 @@ for the JavaScript code in this tag.
 <h2>Inhaltsverzeichnis</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9b9d32d">1. Packages und Data</a>
+<li><a href="#org8ff5605">1. Packages und Data</a>
 <ul>
-<li><a href="#orga401842">1.1. Packages</a></li>
-<li><a href="#org58e374a">1.2. Daten</a></li>
-<li><a href="#org0321ae5">1.3. Überblick</a></li>
+<li><a href="#orga074fe5">1.1. Packages</a></li>
+<li><a href="#org4ae6e1a">1.2. Daten</a></li>
+<li><a href="#orgaec4248">1.3. Überblick</a></li>
 </ul>
 </li>
-<li><a href="#org12d8c7b">2. Briefkasten pro Kanton</a></li>
-<li><a href="#orge313e91">3. Karten Briefkästen</a></li>
-<li><a href="#orgdb778c9">4. Der südlichste, nördlichste, östlichste, westlichste Briefkasten</a></li>
-<li><a href="#orgd8df14b">5. Der einsamste Briefkasten</a></li>
-<li><a href="#org7e68c8e">6. Die grösste Entfernung von einem Briefkasten</a></li>
-<li><a href="#orgbd0729b">7. Zusammenfassung</a></li>
+<li><a href="#orge111d03">2. Briefkasten pro Kanton</a></li>
+<li><a href="#org4cc3605">3. Karten Briefkästen</a></li>
+<li><a href="#org5a8273a">4. Der südlichste, nördlichste, östlichste, westlichste Briefkasten</a></li>
+<li><a href="#orgbded9fd">5. Der einsamste Briefkasten</a></li>
+<li><a href="#orga501b30">6. Die grösste Entfernung von einem Briefkasten</a></li>
+<li><a href="#org4cf6ce0">7. Zusammenfassung</a></li>
 </ul>
 </div>
 </div>
@@ -262,12 +262,12 @@ folgenden Zeilen. Der R-Code ist auch ohne Text in einem
 separaten <a href="./briefkasten.R">File</a> verfügbar.
 </p>
 
-<div id="outline-container-org9b9d32d" class="outline-2">
-<h2 id="org9b9d32d"><span class="section-number-2">1</span> Packages und Data</h2>
+<div id="outline-container-org8ff5605" class="outline-2">
+<h2 id="org8ff5605"><span class="section-number-2">1</span> Packages und Data</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orga401842" class="outline-3">
-<h3 id="orga401842"><span class="section-number-3">1.1</span> Packages</h3>
+<div id="outline-container-orga074fe5" class="outline-3">
+<h3 id="orga074fe5"><span class="section-number-3">1.1</span> Packages</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #7fffd4;">library</span>(ggplot2)
@@ -278,101 +278,14 @@ separaten <a href="./briefkasten.R">File</a> verfügbar.
 <span style="color: #7fffd4;">library</span>(stringr)
 </pre>
 </div>
-
-<table>
-
-
-<colgroup>
-<col  class="org-left">
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">geosphere</td>
-</tr>
-
-<tr>
-<td class="org-left">stringr</td>
-</tr>
-
-<tr>
-<td class="org-left">rworldmap</td>
-</tr>
-
-<tr>
-<td class="org-left">tictoc</td>
-</tr>
-
-<tr>
-<td class="org-left">raster</td>
-</tr>
-
-<tr>
-<td class="org-left">sp</td>
-</tr>
-
-<tr>
-<td class="org-left">RColorBrewer</td>
-</tr>
-
-<tr>
-<td class="org-left">gridExtra</td>
-</tr>
-
-<tr>
-<td class="org-left">reshape2</td>
-</tr>
-
-<tr>
-<td class="org-left">dplyr</td>
-</tr>
-
-<tr>
-<td class="org-left">devtools</td>
-</tr>
-
-<tr>
-<td class="org-left">ggswissmaps</td>
-</tr>
-
-<tr>
-<td class="org-left">ggplot2</td>
-</tr>
-
-<tr>
-<td class="org-left">stats</td>
-</tr>
-
-<tr>
-<td class="org-left">graphics</td>
-</tr>
-
-<tr>
-<td class="org-left">grDevices</td>
-</tr>
-
-<tr>
-<td class="org-left">utils</td>
-</tr>
-
-<tr>
-<td class="org-left">datasets</td>
-</tr>
-
-<tr>
-<td class="org-left">methods</td>
-</tr>
-
-<tr>
-<td class="org-left">base</td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 
 
-<div id="outline-container-org58e374a" class="outline-3">
-<h3 id="org58e374a"><span class="section-number-3">1.2</span> Daten</h3>
+
+
+<div id="outline-container-org4ae6e1a" class="outline-3">
+<h3 id="org4ae6e1a"><span class="section-number-3">1.2</span> Daten</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Wir speichern den Datensatz vom Open Data Portal
@@ -390,8 +303,8 @@ dat <span style="color: #7fffd4;">&lt;-</span> read.csv(<span style="color: #ffa
 
 
 
-<div id="outline-container-org0321ae5" class="outline-3">
-<h3 id="org0321ae5"><span class="section-number-3">1.3</span> Überblick</h3>
+<div id="outline-container-orgaec4248" class="outline-3">
+<h3 id="orgaec4248"><span class="section-number-3">1.3</span> Überblick</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Was uns interessiert ist die Variable <code>poityp_de</code>.
@@ -433,12 +346,10 @@ paste(<span style="color: #ffa07a;">"Verschiedene Filialen: "</span>, dim(unique
 </div>
 
 <pre class="example">
-[1] "Verschiedene Filialen:  2168"
+Verschiedene Filialen:  2168
 
 </pre>
-<p>
-[1] "Verschiedene Filialen:  2168"
-</p>
+
 
 <p>
 Das heisst es gibt also "nur" 2168 verschiedene Filialen. Mehrere
@@ -454,7 +365,7 @@ paste(<span style="color: #ffa07a;">"Verschiedene Postfachanlagen: "</span>,
 </div>
 
 <pre class="example">
-[1] "Verschiedene Postfachanlagen:  1902"
+Verschiedene Postfachanlagen:  1902
 
 </pre>
 
@@ -464,13 +375,14 @@ Bei den Briefeinwurfstellen gibt es offenbar ebenfalls mehrere am gleichen Ort.
 
 
 <div class="org-src-container">
-<pre class="src src-R">bk = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Briefeinwurf"</span>,]
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Anzahl Briefkasten mit verschiedenen "geopoint"-Koordinaten</span>
+bk = dat[dat[<span style="color: #ffa07a;">"poityp_de"</span>]==<span style="color: #ffa07a;">"Briefeinwurf"</span>,]
 paste(<span style="color: #ffa07a;">"Verschiedene Briefk&#228;sten: "</span>, dim(unique(bk[<span style="color: #ffa07a;">"geopoint"</span>]))[1])
 </pre>
 </div>
 
 <pre class="example">
-[1] "Verschiedene Briefkästen:  14369"
+Verschiedene Briefkästen:  14369
 
 </pre>
 
@@ -481,7 +393,8 @@ eingetragen:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">a = table(bk[<span style="color: #ffa07a;">"geopoint"</span>])
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Finde geopoints mit mehreren Briefeinwurf</span>
+a = table(bk[<span style="color: #ffa07a;">"geopoint"</span>])
 head(a[order(a, decreasing=T)])
 </pre>
 </div>
@@ -495,12 +408,15 @@ head(a[order(a, decreasing=T)])
 
 </pre>
 
+
+
 <p>
 Zum Beispiel am Genf Flughafen:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">bk[bk[<span style="color: #ffa07a;">"geopoint"</span>]==<span style="color: #ffa07a;">"46.23077572, 6.10762985"</span>, <span style="color: #ffa07a;">"POIName_de"</span>]
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Alle geopoints mit den Koordinaten 46.23077572, 6.10762985</span>
+bk[bk[<span style="color: #ffa07a;">"geopoint"</span>]==<span style="color: #ffa07a;">"46.23077572, 6.10762985"</span>, <span style="color: #ffa07a;">"POIName_de"</span>]
 </pre>
 </div>
 
@@ -517,18 +433,19 @@ Zum Beispiel am Genf Flughafen:
 </div>
 </div>
 
-<div id="outline-container-org12d8c7b" class="outline-2">
-<h2 id="org12d8c7b"><span class="section-number-2">2</span> Briefkasten pro Kanton</h2>
+<div id="outline-container-orge111d03" class="outline-2">
+<h2 id="orge111d03"><span class="section-number-2">2</span> Briefkasten pro Kanton</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Wie sind die Briefkästen über die Kantone verteilt? Haben alle Kantone
-etwa gleich viele Briefkästen? Wohl kaum. Die Kanton haben sind
-flächenmässig ganz unterschiedlich gross und sind unterschiedlich
-dicht besiedelt.
+ etwa gleich viele Briefkästen? Bei der unterschiedlichen Fläche und
+ Bevölkerungsdichte ist das nicht zu erwarten. Und tatsächlich gibt es
+ grosse Unterschiede.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">kantbk = table(bk[<span style="color: #ffa07a;">"address_kantoncode"</span>])
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Geordnte Tabelle mit Anzahl Briefkasten pro Kanton</span>
+kantbk = table(bk[<span style="color: #ffa07a;">"address_kantoncode"</span>])
 kantbk = kantbk[order(-kantbk)]
 kantbk
 </pre>
@@ -544,20 +461,26 @@ kantbk
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-R">kantbk <span style="color: #7fffd4;">&lt;-</span> data.frame(kantbk[1:26])
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Dataframe f&#252;r einen Barplot mit ggplot2</span>
+kantbk <span style="color: #7fffd4;">&lt;-</span> data.frame(kantbk[1:26])
 colnames(kantbk) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Kanton"</span>, <span style="color: #ffa07a;">"Anzahl"</span>)
 </pre>
 </div>
 
+
 <div class="org-src-container">
-<pre class="src src-R">p <span style="color: #7fffd4;">&lt;-</span> ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Barplot der Anzahl Briefeinwurfstellen in den Kantonen</span>
+png(filename=<span style="color: #ffa07a;">"./figures/briefkasten-kanton.png"</span>, width=800, height=600)
+p <span style="color: #7fffd4;">&lt;-</span> ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
    geom_bar(stat=<span style="color: #ffa07a;">"identity"</span>, fill=<span style="color: #ffa07a;">"steelblue"</span>) +
-   geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=2.8, angle=0, color=<span style="color: #ffa07a;">"black"</span>) +
+   geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=4, angle=0, color=<span style="color: #ffa07a;">"black"</span>)+
    xlab(<span style="color: #ffa07a;">"\nKanton"</span>) +
    ylab(<span style="color: #ffa07a;">"Anzahl Briefeinwurfstellen\n"</span>) +
    theme_minimal()
 
 p
+dev.off()
+
 </pre>
 </div>
 
@@ -576,22 +499,28 @@ Innerrhoden (20).
 </div>
 </div>
 
-<div id="outline-container-orge313e91" class="outline-2">
-<h2 id="orge313e91"><span class="section-number-2">3</span> Karten Briefkästen</h2>
+<div id="outline-container-org4cc3605" class="outline-2">
+<h2 id="org4cc3605"><span class="section-number-2">3</span> Karten Briefkästen</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-R">bkcoord <span style="color: #7fffd4;">&lt;-</span> str_split_fixed(bk$geopoint, <span style="color: #ffa07a;">","</span>, 2)
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Im Datensatz sind beide Koordinaten als String in einem Feld. Es ist</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">bequemer die L&#228;nge und Breite in separate Spalten zu schreiben ("lat", "lon").</span>
+bkcoord <span style="color: #7fffd4;">&lt;-</span> str_split_fixed(bk$geopoint, <span style="color: #ffa07a;">","</span>, 2)
 coords <span style="color: #7fffd4;">&lt;-</span> data.frame(cbind(as.numeric(bkcoord[,1]), as.numeric(bkcoord[,2])))
 colnames(coords) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"lat"</span>, <span style="color: #ffa07a;">"lon"</span>)
 bk[<span style="color: #ffa07a;">"lat"</span>] = coords[<span style="color: #ffa07a;">"lat"</span>]
 bk[<span style="color: #ffa07a;">"lon"</span>] = coords[<span style="color: #ffa07a;">"lon"</span>]
+
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">Mache ein Spatial object</span>
 coordinates(coords) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"lon"</span>, <span style="color: #ffa07a;">"lat"</span>)
 crs.geo <span style="color: #7fffd4;">&lt;-</span> CRS(<span style="color: #ffa07a;">"+proj=longlat +ellps=WGS84 +datum=WGS84"</span>)
 proj4string(coords) <span style="color: #7fffd4;">&lt;-</span> crs.geo
-summary(coords)
 ch <span style="color: #7fffd4;">&lt;-</span> getData(<span style="color: #ffa07a;">"GADM"</span>, country = <span style="color: #ffa07a;">"CHE"</span>, level = 0)
+
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">Plot von allen Koordinaten der Briefkasten</span>
 png(file=<span style="color: #ffa07a;">"figures/alle-briefkasten-map.png"</span>,width=800,height=600)
 plot(coords, pch = 20, cex=0.8, col = <span style="color: #ffa07a;">"steelblue"</span>)
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">Schweizergrenze</span>
 plot(ch, add = T)
 </pre>
 </div>
@@ -613,30 +542,30 @@ der Grenzen, am Flughafen Basel.
 </div>
 </div>
 
-<div id="outline-container-orgdb778c9" class="outline-2">
-<h2 id="orgdb778c9"><span class="section-number-2">4</span> Der südlichste, nördlichste, östlichste, westlichste Briefkasten</h2>
+<div id="outline-container-org5a8273a" class="outline-2">
+<h2 id="org5a8273a"><span class="section-number-2">4</span> Der südlichste, nördlichste, östlichste, westlichste Briefkasten</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Welches ist der südlichste, nördlichste, östlichste, westlichste Briefkasten?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">bk[which.max(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
-bk[which.min(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
-bk[which.min(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
-bk[which.max(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]
+<pre class="src src-R">rbind(
+bk[which.max(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)],
+bk[which.min(bk$lat), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)],
+bk[which.min(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)],
+bk[which.max(bk$lon), c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)])
 </pre>
 </div>
 
 <pre class="example">
-                               POIName_de               geopoint
-32192 Briefeinwurf Bargen SH, Dorfstrasse 47.7920661, 8.61119639
-                                     POIName_de               geopoint
-67728 Briefeinwurf Pedrinate, Filiale Pedrinate 45.82604626, 9.0128896
-                                    POIName_de               geopoint
-33654 Briefeinwurf Chancy, Route de Bellegarde 46.1499937, 5.97105028
-                              POIName_de                geopoint
-47917 Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
+png
+  2
+                                     POIName_de                geopoint
+32192       Briefeinwurf Bargen SH, Dorfstrasse  47.7920661, 8.61119639
+67728 Briefeinwurf Pedrinate, Filiale Pedrinate  45.82604626, 9.0128896
+33654  Briefeinwurf Chancy, Route de Bellegarde  46.1499937, 5.97105028
+47917        Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
 
 </pre>
 
@@ -684,24 +613,27 @@ maxS = which.min(bk$lat)
 maxW = which.min(bk$lon)
 maxE = which.max(bk$lon)
 
-NSWE <span style="color: #7fffd4;">&lt;-</span> distm(bk[c(maxN,maxW) ,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], bk[c(maxS, maxE),c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], fun=distHaversine)
-paste(<span style="color: #ffa07a;">"Nord-S&#252;d: "</span>, round(NSWE[1,1]/1000,3), <span style="color: #ffa07a;">"km"</span>)
-paste(<span style="color: #ffa07a;">"West-Ost: "</span>, round(NSWE[2,2]/1000,3), <span style="color: #ffa07a;">"km"</span>)
+NSWE <span style="color: #7fffd4;">&lt;-</span> distm(bk[c(maxN,maxW) ,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], bk[c(maxS, maxE),c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)],
+              fun=distHaversine)
+rbind(
+paste(<span style="color: #ffa07a;">"Nord-S&#252;d: "</span>, round(NSWE[1,1]/1000,3), <span style="color: #ffa07a;">"km"</span>),
+paste(<span style="color: #ffa07a;">"West-Ost: "</span>, round(NSWE[2,2]/1000,3), <span style="color: #ffa07a;">"km"</span>))
 
 </pre>
 </div>
 
 <pre class="example">
-[1] "Nord-Süd:  220.985 km"
-[1] "West-Ost:  353.681 km"
+     [,1]
+[1,] "Nord-Süd:  220.985 km"
+[2,] "West-Ost:  353.681 km"
 
 </pre>
 </div>
 </div>
 
 
-<div id="outline-container-orgd8df14b" class="outline-2">
-<h2 id="orgd8df14b"><span class="section-number-2">5</span> Der einsamste Briefkasten</h2>
+<div id="outline-container-orgbded9fd" class="outline-2">
+<h2 id="orgbded9fd"><span class="section-number-2">5</span> Der einsamste Briefkasten</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Welcher Briefkasten ist am weitesten entfernt von einem andern
@@ -711,15 +643,14 @@ dauern kann.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #7fffd4;">require</span>(<span style="color: #ffa07a;">"geosphere"</span>)
-tic(<span style="color: #ffa07a;">"Berechnung der Distanzmatrix"</span>)
+<pre class="src src-R">tic(<span style="color: #ffa07a;">"Berechnung der Distanzmatrix"</span>)
 mat <span style="color: #7fffd4;">&lt;-</span> distm(bk[,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], bk[,c(<span style="color: #ffa07a;">'lon'</span>,<span style="color: #ffa07a;">'lat'</span>)], fun=distHaversine)
 toc()
 </pre>
 </div>
 
 <pre class="example">
-Berechnung der Distanzmatrix: 522.225 sec elapsed
+Berechnung der Distanzmatrix: 208.919 sec elapsed
 
 </pre>
 
@@ -746,8 +677,13 @@ und deren Indizes in der Distanzmatrix.
 </pre>
 </div>
 
+
+
+
 <div class="org-src-container">
-<pre class="src src-R">mat[mat==0] <span style="color: #7fffd4;">&lt;-</span> <span style="color: #98fb98;">NA</span>
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Weise 0-Eintr&#228;gen NA zu. Sonst findet die Funktion col_min nur</span>
+<span style="color: #ff4500;"># </span><span style="color: #ff4500;">Nullen.</span>
+mat[mat==0] <span style="color: #7fffd4;">&lt;-</span> <span style="color: #98fb98;">NA</span>
 remotest5 = get_remotest_n(mat, 5)
 </pre>
 </div>
@@ -757,20 +693,21 @@ Die Koordinaten der 5 entlegensten Briefkästen:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">a <span style="color: #7fffd4;">&lt;-</span> data.frame(cbind(remotest5[3,], bk[remotest5[2,], c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]))
-colnames(a) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Distanz (m)"</span>, <span style="color: #ffa07a;">"Ort"</span>, <span style="color: #ffa07a;">"geopoint"</span>)
+<pre class="src src-R"><span style="color: #ff4500;"># </span><span style="color: #ff4500;">Ein Dataframe zu Darstellungszwecken</span>
+a <span style="color: #7fffd4;">&lt;-</span> data.frame(cbind(1:5, remotest5[3,], bk[remotest5[2,], c(<span style="color: #ffa07a;">"POIName_de"</span>, <span style="color: #ffa07a;">"geopoint"</span>)]))
+colnames(a) <span style="color: #7fffd4;">&lt;-</span> c(<span style="color: #ffa07a;">"Platz"</span>, <span style="color: #ffa07a;">"Distanz (m)"</span>, <span style="color: #ffa07a;">"Ort"</span>, <span style="color: #ffa07a;">"geopoint"</span>)
 rownames(a) <span style="color: #7fffd4;">&lt;-</span> 1:5
 a
 </pre>
 </div>
 
 <pre class="example">
-  Distanz (m)                                             Ort
-1    8828.135                     Briefeinwurf Scuol, S-charl
-2    7873.248   Briefeinwurf Gruben, Briefkastenanlage Gruben
-3    6540.652             Briefeinwurf Arolla, Filiale Arolla
-4    6509.128 Briefeinwurf Simplon Dorf, Filiale Simplon Dorf
-5    6509.128              Briefeinwurf Gondo, Simplonstrasse
+  Platz Distanz (m)                                             Ort
+1     1    8828.135                     Briefeinwurf Scuol, S-charl
+2     2    7873.248   Briefeinwurf Gruben, Briefkastenanlage Gruben
+3     3    6540.652             Briefeinwurf Arolla, Filiale Arolla
+4     4    6509.128 Briefeinwurf Simplon Dorf, Filiale Simplon Dorf
+5     5    6509.128              Briefeinwurf Gondo, Simplonstrasse
                  geopoint
 1 46.71528382, 10.3346684
 2  46.2116481, 7.70619015
@@ -780,10 +717,12 @@ a
 </pre>
 
 
+
+
 <div class="figure">
 <p><img src="./figures/alle-briefkasten-map-mit-pfeil.png" alt="alle-briefkasten-map-mit-pfeil.png">
 </p>
-<p><span class="figure-number">Abbildung 7: </span>Briefeinwurfstelle in S-charl</p>
+<p><span class="figure-number">Abbildung 7: </span>Briefeinwurfstellen der Schweiz. Pfeil auf S-charl GR.</p>
 </div>
 
 <p>
@@ -798,8 +737,8 @@ findet man im Wallis.
 
 
 
-<div id="outline-container-org7e68c8e" class="outline-2">
-<h2 id="org7e68c8e"><span class="section-number-2">6</span> Die grösste Entfernung von einem Briefkasten</h2>
+<div id="outline-container-orga501b30" class="outline-2">
+<h2 id="orga501b30"><span class="section-number-2">6</span> Die grösste Entfernung von einem Briefkasten</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Die Briefeinwurfstellen in der Schweiz sind so dicht gestreut, dass man sich
@@ -822,8 +761,7 @@ schlimmsten Fall um einen Kilometer.
 Zuerst wird der Raster definiert:
 </p>
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #7fffd4;">library</span>(raster)
-ch <span style="color: #7fffd4;">&lt;-</span> getData(<span style="color: #ffa07a;">"GADM"</span>, country = <span style="color: #ffa07a;">"CHE"</span>, level = 0)
+<pre class="src src-R">ch <span style="color: #7fffd4;">&lt;-</span> getData(<span style="color: #ffa07a;">"GADM"</span>, country = <span style="color: #ffa07a;">"CHE"</span>, level = 0)
 bkcoords <span style="color: #7fffd4;">&lt;-</span> SpatialPoints(bk[,c(<span style="color: #ffa07a;">"lon"</span>, <span style="color: #ffa07a;">"lat"</span>)])
 ext <span style="color: #7fffd4;">&lt;-</span> extent(5.956063, 10.49511, 45.81706, 47.80848)
 <span style="color: #ff4500;"># </span><span style="color: #ff4500;">grobes Raster</span>
@@ -837,7 +775,7 @@ chraster <span style="color: #7fffd4;">&lt;-</span> rasterize(ch, r)
 Dann wird die Matrix berechnet:
 </p>
 <div class="org-src-container">
-<pre class="src src-R">tic(<span style="color: #ffa07a;">"Distance matrix"</span>)
+<pre class="src src-R">tic(<span style="color: #ffa07a;">"Berechnung der Distanzen Raster-Briefeinwurfstellen geopoints"</span>)
 D <span style="color: #7fffd4;">&lt;-</span> distanceFromPoints(object = chraster, xy = bkcoords)
 toc()
 </pre>
@@ -884,6 +822,7 @@ grössten Abstand zu einem Briefkasten und deren Koordinaten.
 <div class="org-src-container">
 <pre class="src src-R">png(file=<span style="color: #ffa07a;">"figures/schweiz-distance-110-175.png"</span>,width=800,height=600)
 plot(D)
+dev.off()
 </pre>
 </div>
 
@@ -906,8 +845,8 @@ bestimmen.
 </div>
 </div>
 
-<div id="outline-container-orgbd0729b" class="outline-2">
-<h2 id="orgbd0729b"><span class="section-number-2">7</span> Zusammenfassung</h2>
+<div id="outline-container-org4cf6ce0" class="outline-2">
+<h2 id="org4cf6ce0"><span class="section-number-2">7</span> Zusammenfassung</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Die 14'369 Briefeinwurfstellen der Schweizer Post sind recht
@@ -924,7 +863,7 @@ Vom nördlichsten zum südlichsten Briefkasten sind es
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Ismael Lieberherr</p>
-<p class="date">Created: 2018-04-16 Mon 21:48</p>
+<p class="date">Created: 2018-04-17 Tue 08:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

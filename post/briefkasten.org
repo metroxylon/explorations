@@ -25,27 +25,7 @@ library(tictoc)
 library(stringr)
 #+END_SRC
 
-#+RESULTS:
-| geosphere    |
-| stringr      |
-| rworldmap    |
-| tictoc       |
-| raster       |
-| sp           |
-| RColorBrewer |
-| gridExtra    |
-| reshape2     |
-| dplyr        |
-| devtools     |
-| ggswissmaps  |
-| ggplot2      |
-| stats        |
-| graphics     |
-| grDevices    |
-| utils        |
-| datasets     |
-| methods      |
-| base         |
+
 
 
 ** Daten
@@ -53,10 +33,12 @@ Wir speichern den Datensatz vom Open Data Portal
 [[https://swisspost.opendatasoft.com/explore/dataset/zugangspunkte-post/download/?format=csv][zugangspunkte-post.csv]] als CSV im Ordner =data=.
 
 
-#+begin_src R :session  :exports both :tangle yes
+#+begin_src R :session :results silent :exports code :tangle yes
 # Daten einlesen
 dat <- read.csv("./data/zugangspunkte-post.csv", header=TRUE, sep=";")
 #+end_src
+
+#+RESULTS:
 
 
 
@@ -86,19 +68,20 @@ in den Filialen und den Postfachanlagen verschiedene Services
 angeboten werden. D.h. es gibt manchmal mehrere Einträge =Filiale= am
 gleichen Ort (=geopoint=).
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session  :exports both :tangle yes
 # Anzahl der Filialen mit verschiedenen "geopoint"-Koordinaten
 filialen = dat[dat["poityp_de"]=="Filiale",]
 paste("Verschiedene Filialen: ", dim(unique(filialen["geopoint"]))[1])
 #+end_src
 
 #+RESULTS:
-[1] "Verschiedene Filialen:  2168"
+: Verschiedene Filialen:  2168
+
 
 Das heisst es gibt also "nur" 2168 verschiedene Filialen. Mehrere
 Einträge pro Anlage gibt es auch bei den Postfachanlagen:
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session  :exports both :tangle yes
 # Anzahl Postfachanlagen mit verschiedenen "geopoint"-Koordinaten
 postfachanlagen = dat[dat["poityp_de"]=="Postfachanlage",]
 paste("Verschiedene Postfachanlagen: ",
@@ -106,24 +89,26 @@ paste("Verschiedene Postfachanlagen: ",
 #+end_src
 
 #+RESULTS:
-: [1] "Verschiedene Postfachanlagen:  1902"
+: Verschiedene Postfachanlagen:  1902
 
 Bei den Briefeinwurfstellen gibt es offenbar ebenfalls mehrere am gleichen Ort.
 
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session  :exports both :tangle yes
+# Anzahl Briefkasten mit verschiedenen "geopoint"-Koordinaten
 bk = dat[dat["poityp_de"]=="Briefeinwurf",]
 paste("Verschiedene Briefkästen: ", dim(unique(bk["geopoint"]))[1])
 #+end_src
 
 #+RESULTS:
-: [1] "Verschiedene Briefkästen:  14369"
+: Verschiedene Briefkästen:  14369
 
 Insgesamt sind es 14557 Briefkästen an 14369 verschiedenen Orten. Bis
 zu 5 Briefeinwurfstellen sind mit den gleichen Koordinaten
 eingetragen:
 
 #+begin_src R :session :results output :exports both :tangle yes
+# Finde geopoints mit mehreren Briefeinwurf
 a = table(bk["geopoint"])
 head(a[order(a, decreasing=T)])
 #+end_src
@@ -135,48 +120,64 @@ head(a[order(a, decreasing=T)])
 :    46.1034836, 7.076093 46.46351733, 6.84172552 46.51696775, 6.62967868
 :                       3                       3                       3
 
+
+
 Zum Beispiel am Genf Flughafen:
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session :results output  :exports both :tangle yes
+# Alle geopoints mit den Koordinaten 46.23077572, 6.10762985
 bk[bk["geopoint"]=="46.23077572, 6.10762985", "POIName_de"]
 #+END_SRC
 
 #+RESULTS:
+: [1] Briefeinwurf Genève 15 Aéroport, Hall Transit
+: [2] Briefeinwurf Genève 15 Aéroport, Galerie marchande - Niveau départs
+: [3] Briefeinwurf Genève 15 Aéroport, Route de l' Aéroport
+: [4] Briefeinwurf Genève 15 Aéroport, Check-In / Enregistrement
+: [5] Briefeinwurf Genève 15 Aéroport, Secteur France
+: 19007 Levels: 1003 Lausanne Flon My Post 24 ... Tankstelle Yverdon
 
 * Briefkasten pro Kanton
 Wie sind die Briefkästen über die Kantone verteilt? Haben alle Kantone
-etwa gleich viele Briefkästen? Wohl kaum. Die Kanton haben sind
-flächenmässig ganz unterschiedlich gross und sind unterschiedlich
-dicht besiedelt.
+ etwa gleich viele Briefkästen? Bei der unterschiedlichen Fläche und
+ Bevölkerungsdichte ist das nicht zu erwarten. Und tatsächlich gibt es
+ grosse Unterschiede.
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session :results output  :exports both :tangle yes
+# Geordnte Tabelle mit Anzahl Briefkasten pro Kanton
 kantbk = table(bk["address_kantoncode"])
 kantbk = kantbk[order(-kantbk)]
 kantbk
 #+END_SRC
 
 #+RESULTS:
+:
+:   BE   ZH   VD   VS   AG   TI   GR   SG   FR   LU   GE   TG   SO   BL   NE   BS
+: 2273 2019 1471  965  922  921  670  670  604  569  511  480  473  353  305  228
+:   SZ   JU   ZG   SH   GL   AR   UR   OW   NW   AI        FL
+:  210  199  154  145  102   84   76   75   58   20    0    0
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session :results silent :exports code
+# Dataframe für einen Barplot mit ggplot2
 kantbk <- data.frame(kantbk[1:26])
 colnames(kantbk) <- c("Kanton", "Anzahl")
-#+END_SRC
-
-#+RESULTS:
+#+end_src
 
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session :results silent :exports code :tangle yes
+# Barplot der Anzahl Briefeinwurfstellen in den Kantonen
+png(filename="./figures/briefkasten-kanton.png", width=800, height=600)
 p <- ggplot(data=kantbk, aes(x=Kanton, y=Anzahl)) +
    geom_bar(stat="identity", fill="steelblue") +
-   geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=2.8, angle=0, color="black") +
+   geom_text(aes(label=Anzahl), vjust=0, hjust=0.5, size=4, angle=0, color="black")+
    xlab("\nKanton") +
    ylab("Anzahl Briefeinwurfstellen\n") +
    theme_minimal()
 
 p
-#+end_src
+dev.off()
 
-#+RESULTS:
+#+end_src
 
 #+CAPTION: Anzahl Briefeinwurfstellen in den Kantonen.
 [[./figures/briefkasten-kanton.png]]
@@ -189,18 +190,24 @@ Innerrhoden (20).
 
 
 #+begin_src R :session  :file figures/alle-briefkasten-map.png :results graphics :exports code :tangle yes
+# Im Datensatz sind beide Koordinaten als String in einem Feld. Es ist
+# bequemer die Länge und Breite in separate Spalten zu schreiben ("lat", "lon").
 bkcoord <- str_split_fixed(bk$geopoint, ",", 2)
 coords <- data.frame(cbind(as.numeric(bkcoord[,1]), as.numeric(bkcoord[,2])))
 colnames(coords) <- c("lat", "lon")
 bk["lat"] = coords["lat"]
 bk["lon"] = coords["lon"]
+
+# Mache ein Spatial object
 coordinates(coords) <- c("lon", "lat")
 crs.geo <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
 proj4string(coords) <- crs.geo
-summary(coords)
 ch <- getData("GADM", country = "CHE", level = 0)
+
+# Plot von allen Koordinaten der Briefkasten
 png(file="figures/alle-briefkasten-map.png",width=800,height=600)
 plot(coords, pch = 20, cex=0.8, col = "steelblue")
+# Schweizergrenze
 plot(ch, add = T)
 #+end_src
 
@@ -220,23 +227,19 @@ der Grenzen, am Flughafen Basel.
 Welches ist der südlichste, nördlichste, östlichste, westlichste Briefkasten?
 
 #+begin_src R :session :results output :exports both :tangle yes
-bk[which.max(bk$lat), c("POIName_de", "geopoint")]
-bk[which.min(bk$lat), c("POIName_de", "geopoint")]
-bk[which.min(bk$lon), c("POIName_de", "geopoint")]
-bk[which.max(bk$lon), c("POIName_de", "geopoint")]
+rbind(
+bk[which.max(bk$lat), c("POIName_de", "geopoint")],
+bk[which.min(bk$lat), c("POIName_de", "geopoint")],
+bk[which.min(bk$lon), c("POIName_de", "geopoint")],
+bk[which.max(bk$lon), c("POIName_de", "geopoint")])
 #+end_src
 
 #+RESULTS:
-#+begin_example
-                               POIName_de               geopoint
-32192 Briefeinwurf Bargen SH, Dorfstrasse 47.7920661, 8.61119639
-                                     POIName_de               geopoint
-67728 Briefeinwurf Pedrinate, Filiale Pedrinate 45.82604626, 9.0128896
-                                    POIName_de               geopoint
-33654 Briefeinwurf Chancy, Route de Bellegarde 46.1499937, 5.97105028
-                              POIName_de                geopoint
-47917 Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
-#+end_example
+:                                      POIName_de                geopoint
+: 32192       Briefeinwurf Bargen SH, Dorfstrasse  47.7920661, 8.61119639
+: 67728 Briefeinwurf Pedrinate, Filiale Pedrinate  45.82604626, 9.0128896
+: 33654  Briefeinwurf Chancy, Route de Bellegarde  46.1499937, 5.97105028
+: 47917        Briefeinwurf Martina, Via dal Dazi 46.8846352, 10.46374335
 
 Mit Google Street View sind drei der vier Briefkästen leicht zu finden.
 
@@ -260,21 +263,23 @@ Mit Google Street View sind drei der vier Briefkästen leicht zu finden.
 
 Wir berechnen noch die Luftliniendistanz vom nördlichsten zum südlichsten und
 vom westlichsten zum östlichsten Briefkasten.
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session  :results output :exports both :tangle yes
 maxN = which.max(bk$lat)
 maxS = which.min(bk$lat)
 maxW = which.min(bk$lon)
 maxE = which.max(bk$lon)
 
-NSWE <- distm(bk[c(maxN,maxW) ,c('lon','lat')], bk[c(maxS, maxE),c('lon','lat')], fun=distHaversine)
-paste("Nord-Süd: ", round(NSWE[1,1]/1000,3), "km")
-paste("West-Ost: ", round(NSWE[2,2]/1000,3), "km")
+NSWE <- distm(bk[c(maxN,maxW) ,c('lon','lat')], bk[c(maxS, maxE),c('lon','lat')],
+              fun=distHaversine)
+rbind(
+paste("Nord-Süd: ", round(NSWE[1,1]/1000,3), "km"),
+paste("West-Ost: ", round(NSWE[2,2]/1000,3), "km"))
 
 #+end_src
 
 #+RESULTS:
-: [1] "Nord-Süd:  220.985 km"
-: [1] "West-Ost:  353.681 km"
+| Nord-Süd:  220.985 km |
+| West-Ost:  353.681 km |
 
 
 * Der einsamste Briefkasten
@@ -284,7 +289,6 @@ Distanzen zwischen allen Briefkästen, was je nach Hardware etwas
 dauern kann.
 
 #+begin_src R :session :results output :exports both :tangle yes
-require("geosphere")
 tic("Berechnung der Distanzmatrix")
 mat <- distm(bk[,c('lon','lat')], bk[,c('lon','lat')], fun=distHaversine)
 toc()
@@ -296,7 +300,7 @@ toc()
 Wir definieren eine Funktion, um die grössten Spaltenminima zu finden,
 und deren Indizes in der Distanzmatrix.
 
-#+begin_src R :session :results output :exports both :tangle yes
+#+begin_src R :session :results silent :exports code :tangle yes
 col_min <- function(colnr, matr){
     # Minimum und position des Minimums in jeder Spalte.
     m <- which.min(matr[,colnr])
@@ -313,32 +317,38 @@ get_remotest_n <- function(matr, n){
 }
 #+end_src
 
-#+RESULTS:
+
+
 
 #+begin_src R :session :results output :exports both :tangle yes
+# Weise 0-Einträgen NA zu. Sonst findet die Funktion col_min nur
+# Nullen.
 mat[mat==0] <- NA
 remotest5 = get_remotest_n(mat, 5)
 #+end_src
 
 #+RESULTS:
+: Error in mat[mat == 0] <- NA : object 'mat' not found
+: Error in get_remotest_n(mat, 5) (from unknown!4326ezE#10) : object 'mat' not found
 
 Die Koordinaten der 5 entlegensten Briefkästen:
 
 #+begin_src R :session :results output :exports both :tangle yes
-a <- data.frame(cbind(remotest5[3,], bk[remotest5[2,], c("POIName_de", "geopoint")]))
-colnames(a) <- c("Distanz (m)", "Ort", "geopoint")
+# Ein Dataframe zu Darstellungszwecken
+a <- data.frame(cbind(1:5, remotest5[3,], bk[remotest5[2,], c("POIName_de", "geopoint")]))
+colnames(a) <- c("Platz", "Distanz (m)", "Ort", "geopoint")
 rownames(a) <- 1:5
 a
 #+end_src
 
 #+RESULTS:
 #+begin_example
-  Distanz (m)                                             Ort
-1    8828.135                     Briefeinwurf Scuol, S-charl
-2    7873.248   Briefeinwurf Gruben, Briefkastenanlage Gruben
-3    6540.652             Briefeinwurf Arolla, Filiale Arolla
-4    6509.128 Briefeinwurf Simplon Dorf, Filiale Simplon Dorf
-5    6509.128              Briefeinwurf Gondo, Simplonstrasse
+  Platz Distanz (m)                                             Ort
+1     1    8828.135                     Briefeinwurf Scuol, S-charl
+2     2    7873.248   Briefeinwurf Gruben, Briefkastenanlage Gruben
+3     3    6540.652             Briefeinwurf Arolla, Filiale Arolla
+4     4    6509.128 Briefeinwurf Simplon Dorf, Filiale Simplon Dorf
+5     5    6509.128              Briefeinwurf Gondo, Simplonstrasse
                  geopoint
 1 46.71528382, 10.3346684
 2  46.2116481, 7.70619015
@@ -347,7 +357,9 @@ a
 5 46.19586667, 8.13978721
 #+end_example
 
-#+CAPTION: Briefeinwurfstelle in S-charl
+
+
+#+CAPTION: Briefeinwurfstellen der Schweiz. Pfeil auf S-charl GR.
 [[./figures/alle-briefkasten-map-mit-pfeil.png]]
 
 Der abgelegenste Briefkasten steht in S-charl, in einem Seitental des
@@ -373,8 +385,7 @@ schlimmsten Fall um einen Kilometer.
 
 
 Zuerst wird der Raster definiert:
-#+begin_src R :session  :exports code :tangle yes
-library(raster)
+#+begin_src R :session :results silent  :exports code :tangle yes
 ch <- getData("GADM", country = "CHE", level = 0)
 bkcoords <- SpatialPoints(bk[,c("lon", "lat")])
 ext <- extent(5.956063, 10.49511, 45.81706, 47.80848)
@@ -388,7 +399,7 @@ chraster <- rasterize(ch, r)
 
 Dann wird die Matrix berechnet:
 #+begin_src R :session :results output :exports code :tangle yes
-tic("Distance matrix")
+tic("Berechnung der Distanzen Raster-Briefeinwurfstellen geopoints")
 D <- distanceFromPoints(object = chraster, xy = bkcoords)
 toc()
 #+end_src
@@ -432,13 +443,14 @@ remotest_n <- function(n, D, raster){
 10    10616.25 46.56837  8.173712
 #+end_example
 
-#+begin_src R :session :file figures/schweiz-distance-110-175.png :results output graphics :exports code :tangle yes
+#+begin_src R :session  :exports code :tangle yes
 png(file="figures/schweiz-distance-110-175.png",width=800,height=600)
 plot(D)
+dev.off()
 #+end_src
 
 #+RESULTS:
-[[file:figures/schweiz-distance-110-175.png]]
+: 2
 
 #+CAPTION: Kein Höhenprofil sondern die Luftliniendistanz zum nächsten Briefkasten (in Metern).
 [[./figures/schweiz-distance-110-175-mit-pfeil.png]]
